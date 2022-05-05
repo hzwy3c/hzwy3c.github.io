@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hwang</title>
+  <title>hzw&#39; blog</title>
   <icon>https://www.gravatar.com/avatar/c316d07af70f73a6862590e79322d097</icon>
-  <subtitle>光阴易逝，岂容我待</subtitle>
+  <subtitle>今日事，明日毕</subtitle>
   <link href="http://gugugu404.github.io.git/atom.xml" rel="self"/>
   
   <link href="http://gugugu404.github.io.git/"/>
