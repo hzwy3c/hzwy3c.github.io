@@ -6,7 +6,7 @@
   <link href="http://gugugu404.github.io.git/atom.xml" rel="self"/>
   
   <link href="http://gugugu404.github.io.git/"/>
-  <updated>2022-05-05T13:02:25.824Z</updated>
+  <updated>2022-08-28T12:05:32.423Z</updated>
   <id>http://gugugu404.github.io.git/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://gugugu404.github.io.git/2022/08/28/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Embedding/"/>
+    <id>http://gugugu404.github.io.git/2022/08/28/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Embedding/</id>
+    <published>2022-08-28T12:21:51.469Z</published>
+    <updated>2022-08-28T12:05:32.423Z</updated>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h2 id="一、什么是Embedding？"><a href="#一、什么是Embedding？" class="headerlink" title="一、什么是Embedding？"></a>一、<strong>什么是Embedding？</strong></h2><p>“Embedding”直译是<strong>嵌入式、嵌入层</strong>。</p><p>简单来说，我们常见的<strong>地图</strong>就是对于<strong>现实地理的Embedding</strong>，现实的地理地形的信息其实远远超过三维，但是地图通过颜色和等高线等来最大化表现现实的地理<strong>信息</strong>。</p><p>通过它，我们在现实世界里的文字、图片、语言、视频就能转化为计算机能识别、能使用的语言，且转化的过程中信息不丢失。</p><p>Embedding层，在某种程度上，就是用来降维的，降维的原理就是矩阵乘法。</p><h2 id="二、One-Hot编码"><a href="#二、One-Hot编码" class="headerlink" title="二、One-Hot编码"></a>二、One-Hot编码</h2><p>One-Hot 编码是<strong>分类变量</strong>作为<strong>二进制向量</strong>的表示。</p><ol><li>将分类值映射到整数值。</li><li>然后，每个整数值被表示为二进制向量，除了整数的索引之外，它都是零值，它被标记为1。</li></ol><p><strong>举例：</strong></p><p>运动特征：[“足球”，”篮球”，”羽毛球”，”乒乓球”]（N&#x3D;4）：</p><p>足球 &#x3D;&gt; [1,0,0,0]</p><p>篮球 &#x3D;&gt; [0,1,0,0]</p><p>羽毛球 &#x3D;&gt; [0,0,1,0]</p><p>乒乓球 &#x3D;&gt; [0,0,0,1]</p><p><strong>优点：</strong></p><ol><li>解决了 <strong>分类器不好处理离散数据</strong> 的问题。将离散型特征使用 one-hot 编码，会让<strong>特征之间的距离计算</strong>更加合理。</li><li>在一定程度上也起到了 <strong>扩充特征</strong> 的作用。</li></ol><p><strong>缺点：</strong></p><p>在文本特征表示上有些缺点就非常突出了。</p><ol><li>它是一个词袋模型，不考虑<strong>词与词之间的顺序</strong>（文本中词的顺序信息也是很重要的）；</li><li>它<strong>假设词与词相互独立</strong>（在大多数情况下，词与词是相互影响的）；</li><li>它得到的<strong>特征是离散稀疏</strong>的 (这个问题最严重，Embedding降维就是对此优化)。</li></ol><h2 id="三、怎么理解Embedding"><a href="#三、怎么理解Embedding" class="headerlink" title="三、怎么理解Embedding"></a>三、<strong>怎么理解Embedding</strong></h2><p>由于One-Hot编码过于稀疏，过度占用资源，我们使用Embedding对其降维。</p><p>假设：我们有一个2 x 6的矩阵，然后乘上一个6 x 3的矩阵后，变成了一个2 x 3的矩阵。</p><p><img src="https://gitcode.net/qq_44866969/pic/-/raw/master/Embedding.assets/image-20220828162714414.png" alt="image-20220828162714414"></p><p>Embedding层，在某种程度上，就是用来降维的，降维的原理就是<strong>矩阵乘法</strong>。</p><p>可以降维，那么embedding也可以升维，<strong>对低维的数据进行升维时，可能把一些其他特征给放大了，或者把笼统的特征给分开了</strong>。</p><h2 id="四、Word-Embedding"><a href="#四、Word-Embedding" class="headerlink" title="四、Word Embedding"></a><strong>四、Word Embedding</strong></h2><p>比如将词汇表里的词用 “Royalty”, “Masculinity”, “Femininity” 和 “Age” 4个维度来表示，King 这个词对应的词向量<strong>可能</strong>是 (0.99,0.99,0.05,0.7)。</p><p><img src="https://gitcode.net/qq_44866969/pic/-/raw/master/Embedding.assets/image-20220828162731969.png" alt="image-20220828162731969"></p><p>在实际情况中，有时并不能<strong>对词向量的每个维度做一个很好的解释</strong>，但我们知道他是某一个维度的特征就可以了。</p><p>这个过程称为 <strong>word embedding（词嵌入）</strong>，即将高维词向量嵌入到一个低维空间。如图：</p><p><img src="https://gitcode.net/qq_44866969/pic/-/raw/master/Embedding.assets/image-20220828162742048.png" alt="image-20220828162742048"></p><p>经过我们一系列的降维神操作，有了用 representation 表示的较短的词向量，我们就可以较容易的分析词之间的关系了，比如我们将词的维度降维到 2维，有一个有趣的研究表明，用下图的词向量表示我们的词时，我们可以发现：</p><p><img src="https://gitcode.net/qq_44866969/pic/-/raw/master/Embedding.assets/image-20220828162752774.png" alt="image-20220828162752774"></p><p>queen（皇后）&#x3D; king（国王）- man（男人）+ woman（女人）</p><p>这样计算机能明白，“皇后啊，就是女性的国王”</p><p>walked（过去式）&#x3D; walking（进行时）- swimming（进行时）+ swam（过去式）</p><p>同理计算机也能明白，“walked，就是walking的过去式”</p><p>另外，向量间的距离也可能会建立联系，比方说“北京”是“中国”的首都，“巴黎”是“法国”的首都，那么向量：|中国|-|北京|&#x3D;|法国|-|巴黎|</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;一、什么是Embedding？&quot;&gt;&lt;a href=&quot;#一、什么是Embedding？&quot; class=&quot;headerlink&quot; title=&quot;一、什么是Embedding？&quot;&gt;&lt;/a&gt;一、&lt;strong&gt;什么是Embedding？&lt;/str</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>myFirstBlog</title>
