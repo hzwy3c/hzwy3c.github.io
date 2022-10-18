@@ -1,8 +1,8 @@
-http://gugugu404.github.io.git/2022/10/18/ConGLR/
-http://gugugu404.github.io.git/2022/08/28/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Embedding/
-http://gugugu404.github.io.git/2022/05/05/myFirstBlog-markdown/
-http://gugugu404.github.io.git/2022/05/03/hello-world/
-http://gugugu404.github.io.git/
-http://gugugu404.github.io.git/tags/firstblog/
-http://gugugu404.github.io.git/tags/hexo/
-http://gugugu404.github.io.git/tags/markdown/
+http://hzwy3c.github.io.git/2022/10/18/ConGLR/
+http://hzwy3c.github.io.git/2022/08/28/%E4%B8%80%E6%96%87%E8%AF%BB%E6%87%82Embedding/
+http://hzwy3c.github.io.git/2022/05/05/myFirstBlog-markdown/
+http://hzwy3c.github.io.git/2022/05/03/hello-world/
+http://hzwy3c.github.io.git/
+http://hzwy3c.github.io.git/tags/firstblog/
+http://hzwy3c.github.io.git/tags/hexo/
+http://hzwy3c.github.io.git/tags/markdown/
